@@ -55,7 +55,7 @@ swift
 Copy
 Edit
 /home/ubuntu/.ssh/id_rsa      (private key)
- /home/ubuntu/.ssh/id_rsa.pub  (public key)
+/home/ubuntu/.ssh/id_rsa.pub  (public key)
 b. Add Public Key to GitHub
 Go to GitHub repo → Settings → Deploy Keys
 
@@ -196,5 +196,4 @@ Edit
 
 ---
 
-Do you want me to also **embed visual PNG diagrams** for the trust relationships so your README looks more professional?  
-That way it’s not just text but also visually explains the SSH flows.
+Do you want me to **also create a diagram image** for the trust relationships so it can be added to this README? That would make it visually clear. ​:contentReference[oaicite:0]{index=0}​
