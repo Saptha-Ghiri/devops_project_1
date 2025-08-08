@@ -24,5 +24,4 @@ jobs:
           cd /home/ghiri/devops_project_1
           git pull origin main
           sudo cp /home/ghiri/devops_project_1/index.html /var/www/html/index.html
-          #hrllo
         EOF
