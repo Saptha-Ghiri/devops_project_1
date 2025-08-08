@@ -20,10 +20,10 @@ Automate deployment of an **HTML page** to an AWS EC2 instance whenever you push
 
 1. Go to **AWS Console → EC2 → Launch Instance**  
 2. Configuration:
-   - **Name:** `html-deploy`
+   - **Name:** `demo_website_ec2`
    - **OS:** Ubuntu 22.04 LTS
    - **Type:** t2.micro (Free Tier)
-   - **Key Pair:** Create new (`aws_key.pem`) and download
+   - **Key Pair:** Create new (`demo_website_ec2_key.pem`) and download
    - **Security Group:**  
      - SSH (22) → Your IP  
      - HTTP (80) → Anywhere  
@@ -52,8 +52,8 @@ Test in browser:
 
 ```bash
 cd ~
-mkdir devops
-cd devops
+mkdir devops_project_1
+cd devops_project_1
 ```
 
 ---
@@ -80,6 +80,7 @@ ssh-keygen -t rsa -b 4096 -C "github-deploy-key"
 
 **c. Configure Git on EC2**
 ```bash
+sudo apt install git -y
 git init
 git remote add origin git@github.com:<username>/<repo>.git
 ```
@@ -137,7 +138,7 @@ jobs:
       - name: Deploy to EC2
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@<EC2-IP> << 'EOF'
-            cd /home/ubuntu/devops
+            cd /home/ubuntu/devops_project_1
             git pull origin main
             sudo cp index.html /var/www/html/index.html
           EOF
@@ -148,7 +149,7 @@ jobs:
 ## 7️⃣ First Manual Deployment
 
 ```bash
-cd ~/devops
+cd ~/devops_project_1
 git pull origin main
 sudo cp index.html /var/www/html/index.html
 ```
@@ -192,5 +193,3 @@ Visit:
 - EC2 can pull from GitHub via Deploy Key  
 - GitHub Actions can SSH into EC2 via secret private key  
 - Fully automated deployment  
-
-**Happy Deploying 🚀**
